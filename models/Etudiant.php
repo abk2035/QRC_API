@@ -10,6 +10,7 @@ class Etudiant {
     public $matricule ;
     public $nom ;
     public $prenom ;
+
     // array of students
     public $etudiants ;
 
@@ -31,6 +32,20 @@ class Etudiant {
                 echo('no students...');
             }
         return $this->etudiants ;
+    }
+
+    public function getFiliere(){
+        // query 
+        $query = 'SELECT DISTINCT etud_filiere FROM etudiant' ;
+        $stmt = $this->connect->prepare($query);
+        $stmt->execute(); 
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if($result){
+                return $result ;
+            }else{
+                echo('no students...');
+            }
     }
       
     
